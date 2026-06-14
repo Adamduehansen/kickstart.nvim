@@ -188,7 +188,7 @@ do
   -- Diagnostic Config & Keymaps
   --  See `:help vim.diagnostic.Opts`
   vim.diagnostic.config {
-    -- AHA changes:
+    -- ADH changes:
     -- Changes 'update_in_insert' to true to enable hint while in insert mode.
     update_in_insert = true,
     severity_sort = true,
@@ -199,7 +199,7 @@ do
     virtual_text = true, -- Text shows up at the end of the line
     virtual_lines = false, -- Text shows up underneath the line, with virtual lines
 
-    -- AHA changes:
+    -- ADH changes:
     -- Disables icons in the gutter.
     signs = false,
 
@@ -713,7 +713,7 @@ do
     -- But for many setups, the LSP (`ts_ls`) will work just fine
     -- ts_ls = {},
 
-    -- AHA changes:
+    -- ADH changes:
     -- Enables Deno LSP
     denols = {},
 
@@ -884,7 +884,7 @@ do
       -- Optionally, set `auto_show = true` to show the documentation after a delay.
       documentation = { auto_show = true, auto_show_delay_ms = 500 },
 
-      -- AHA changes:
+      -- ADH changes:
       -- This disables the icons to the left of the suggestions.
       menu = {
         draw = {
