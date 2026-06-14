@@ -188,6 +188,8 @@ do
   -- Diagnostic Config & Keymaps
   --  See `:help vim.diagnostic.Opts`
   vim.diagnostic.config {
+    -- AHA changes:
+    -- Changes 'update_in_insert' to true to enable hint while in insert mode.
     update_in_insert = true,
     severity_sort = true,
     float = { border = 'rounded', source = 'if_many' },
@@ -197,6 +199,8 @@ do
     virtual_text = true, -- Text shows up at the end of the line
     virtual_lines = false, -- Text shows up underneath the line, with virtual lines
 
+    -- AHA changes:
+    -- Disables icons in the gutter.
     signs = false,
 
     -- Auto open the float, so you can easily read the errors when jumping with `[d` and `]d`
@@ -705,7 +709,9 @@ do
     -- But for many setups, the LSP (`ts_ls`) will work just fine
     -- ts_ls = {},
 
-    denols = {}, -- Deno LSP
+    -- AHA changes:
+    -- Enables Deno LSP
+    denols = {},
 
     stylua = {}, -- Used to format Lua code
 
@@ -866,12 +872,21 @@ do
       -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
       -- Adjusts spacing to ensure icons are aligned
       nerd_font_variant = 'mono',
+      kind_icons = {},
     },
 
     completion = {
       -- By default, you may press `<c-space>` to show the documentation.
       -- Optionally, set `auto_show = true` to show the documentation after a delay.
-      documentation = { auto_show = false, auto_show_delay_ms = 500 },
+      documentation = { auto_show = true, auto_show_delay_ms = 500 },
+
+      -- AHA changes:
+      -- This disables the icons to the left of the suggestions.
+      menu = {
+        draw = {
+          columns = { { 'label', 'label_description', gap = 1 } },
+        },
+      },
     },
 
     sources = {
