@@ -722,8 +722,9 @@ do
     -- ts_ls = {},
 
     -- ADH changes:
-    -- Enables Deno LSP
+    -- Enables Deno and TypeScript LSP
     denols = {},
+    ts_ls = {},
 
     stylua = {}, -- Used to format Lua code
 
