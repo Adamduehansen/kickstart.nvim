@@ -511,7 +511,7 @@ do
     --   mappings = {
     --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
     --   },
-      file_ignore_patterns = { ".next", "node_modules", ".git" }
+      file_ignore_patterns = { ".next", "node_modules", ".git", ".storybook" }
     },
     -- pickers = {}
     extensions = {
