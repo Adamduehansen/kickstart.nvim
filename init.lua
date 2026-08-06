@@ -807,6 +807,12 @@ do
       local enabled_filetypes = {
         -- lua = true,
         -- python = true,
+        typescript = true,
+        javascript = true,
+        typescriptreact = true,
+        javascriptreact = true,
+        json = true,
+        jsonc = true,
       }
       if enabled_filetypes[vim.bo[bufnr].filetype] then
         return { timeout_ms = 500 }
@@ -825,6 +831,12 @@ do
       --
       -- You can use 'stop_after_first' to run the first available formatter from the list
       -- javascript = { "prettierd", "prettier", stop_after_first = true },
+      typescript = { 'deno_fmt' },
+      javascript = { 'deno_fmt' },
+      typescriptreact = { 'deno_fmt' },
+      javascriptreact = { 'deno_fmt' },
+      json = { 'deno_fmt' },
+      jsonc = { 'deno_fmt' },
     },
   }
 
