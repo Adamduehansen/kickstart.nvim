@@ -847,7 +847,7 @@ do
       }
       if enabled_filetypes[vim.bo[bufnr].filetype] then
         return {
-          timeout_ms = 1000,
+          timeout_ms = 2000,
           lsp_format = 'never',
         }
       else
