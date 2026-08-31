@@ -749,6 +749,7 @@ do
     },
 
     stylua = {}, -- Used to format Lua code
+    stylelint = {},
 
     -- Special Lua Config, as recommended by neovim help docs
     lua_ls = {
