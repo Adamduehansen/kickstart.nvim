@@ -725,9 +725,10 @@ do
     -- Enables Deno and TypeScript LSP
     denols = {},
     ts_ls = {},
+    stylelint = {},
+    emmet_language_server = {},
 
     stylua = {}, -- Used to format Lua code
-    stylelint = {},
 
     -- Special Lua Config, as recommended by neovim help docs
     lua_ls = {
