@@ -725,6 +725,7 @@ do
     -- Enables Deno and TypeScript LSP
     denols = {},
     ts_ls = {},
+    ols = {},
     stylelint = {},
     emmet_language_server = {},
 
