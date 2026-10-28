@@ -816,6 +816,7 @@ do
         javascriptreact = true,
         json = true,
         jsonc = true,
+        odin = true,
       }
       if enabled_filetypes[vim.bo[bufnr].filetype] then
         return { timeout_ms = 500 }
@@ -840,6 +841,7 @@ do
       javascriptreact = { 'deno_fmt' },
       json = { 'deno_fmt' },
       jsonc = { 'deno_fmt' },
+      odin = { 'odinfmt' },
     },
   }
 
