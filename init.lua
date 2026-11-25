@@ -719,13 +719,30 @@ do
     --    https://github.com/pmizio/typescript-tools.nvim
     --
     -- But for many setups, the LSP (`ts_ls`) will work just fine
-    -- ts_ls = {},
-
-    -- ADH changes:
-    -- Enables Deno and TypeScript LSP
-    denols = {},
     ts_ls = {},
     ols = {},
+    eslint = {
+      root_dir = function(bufnr, on_dir)
+        local root = vim.fs.root(bufnr, {
+          'eslint.config.js',
+          'eslint.config.mjs',
+          'eslint.config.cjs',
+          'eslint.config.ts',
+          'eslint.config.mts',
+          'eslint.config.cts',
+          '.eslintrc',
+          '.eslintrc.js',
+          '.eslintrc.cjs',
+          '.eslintrc.json',
+          '.eslintrc.yaml',
+          '.eslintrc.yml',
+        })
+
+        if root then
+          on_dir(root)
+        end
+      end,
+    },
     stylelint = {},
     emmet_language_server = {},
 
@@ -786,6 +803,7 @@ do
   local ensure_installed = vim.tbl_keys(servers or {})
   vim.list_extend(ensure_installed, {
     -- You can add other tools here that you want Mason to install
+    'prettier',
   })
 
   require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -810,16 +828,27 @@ do
       local enabled_filetypes = {
         -- lua = true,
         -- python = true,
-        typescript = true,
         javascript = true,
-        typescriptreact = true,
         javascriptreact = true,
+        typescript = true,
+        typescriptreact = true,
         json = true,
         jsonc = true,
         odin = true,
+        css = true,
+        scss = true,
+        less = true,
+        html = true,
+        yaml = true,
+        markdown = true,
+        ['markdown.mdx'] = true,
+        graphql = true,
       }
       if enabled_filetypes[vim.bo[bufnr].filetype] then
-        return { timeout_ms = 500 }
+        return {
+          timeout_ms = 2000,
+          lsp_format = 'never',
+        }
       else
         return nil
       end
@@ -829,19 +858,26 @@ do
     },
     -- You can also specify external formatters in here.
     formatters_by_ft = {
+      javascript = { 'prettier' },
+      javascriptreact = { 'prettier' },
+      typescript = { 'prettier' },
+      typescriptreact = { 'prettier' },
+      json = { 'prettier' },
+      jsonc = { 'prettier' },
+      css = { 'prettier' },
+      scss = { 'prettier' },
+      less = { 'prettier' },
+      html = { 'prettier' },
+      yaml = { 'prettier' },
+      markdown = { 'prettier' },
+      ['markdown.mdx'] = { 'prettier' },
+      graphql = { 'prettier' },
       -- rust = { 'rustfmt' },
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
       --
       -- You can use 'stop_after_first' to run the first available formatter from the list
       -- javascript = { "prettierd", "prettier", stop_after_first = true },
-      typescript = { 'deno_fmt' },
-      javascript = { 'deno_fmt' },
-      typescriptreact = { 'deno_fmt' },
-      javascriptreact = { 'deno_fmt' },
-      json = { 'deno_fmt' },
-      jsonc = { 'deno_fmt' },
-      odin = { 'odinfmt' },
     },
   }
 
